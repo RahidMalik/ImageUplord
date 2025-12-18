@@ -1,0 +1,13 @@
+{
+    "watch": [
+        "."
+    ],
+    "ext": "ts,js,json",
+    "ignore": [
+        "node_modules",
+        ".git"
+    ],
+    "exec": "ts-node index.ts",
+      "restartable": true
+
+}
