@@ -1,4 +1,4 @@
-import { Request,Response } from "express";
+import { Request, Response } from "express";
 import cloudinary from "../config/cloudinary";
 import image from "../models/image";
 import { MulterRequest, CloudinaryUploadResult, ApiResponse } from "../types/index";
@@ -51,11 +51,11 @@ export const uplordImage = async (
             data: newImage
         } as ApiResponse);
 
-    } catch (error) {
-        console.error("Uplord Error", error)
+    } catch (error: any) {
+        console.error("DETAILED UPLOAD ERROR:", error); // This will show the real reason in your terminal
         res.status(500).json({
             success: false,
-            error: 'FailFed to upload image'
+            error: error.message || 'Failed to upload image'
 
         } as ApiResponse)
     };
@@ -98,7 +98,7 @@ export const deleteImage = async (req: Request, res: Response): Promise<void> =>
 
         // Delete from MongoDB
         await image.findByIdAndDelete(id);
-        
+
         res.status(200).json({
             success: true,
             message: 'Image deleted successfully'

@@ -16,7 +16,7 @@ const imageSchema = new Schema<IImageDocument>({
         type: Date,
         default: Date.now
     }
-});
+}, { timestamps: true });
 
 
 export default mongoose.model("image", imageSchema)
